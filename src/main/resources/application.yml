@@ -3,18 +3,18 @@ server:
 
 spring:
   application:
-    name: gateway
+    name: gateway-service
   cloud:
     gateway:
       routes:
         - id: multiplication
           uri:
-            http://localhost:8080/
+            lb://MULTIPLICATION
           predicates:
           - Path= /multiplications/**, /results/**
         - id: gamification
           uri:
-            http://localhost:8081/
+            lb://GAMIFICATION
           predicates:
           - Path= /leaders/**, /stats/**
 
